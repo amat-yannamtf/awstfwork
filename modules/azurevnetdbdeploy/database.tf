@@ -37,6 +37,7 @@ resource "azurerm_mssql_virtual_network_rule" "allowamatvnet" {
     server_id                       = azurerm_mssql_server.amatdbserver[count.index].id
     # needs to be fixed
     subnet_id                       = azurerm_subnet.subnets[2].id
+    ignore_missing_vnet_service_endpoint = true
 
     depends_on = [
       azurerm_mssql_database.amatdb,
@@ -61,3 +62,17 @@ resource "azurerm_mssql_firewall_rule" "allow_all_vnet" {
     ]
   
 }
+
+/*resource "azurerm_subnet_service_endpoint_storage_policy" "example" {
+  name                = "example-policy"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  definition {
+    name        = "name1"
+    description = "definition1"
+    service_resources = [
+      azurerm_resource_group.example.id,
+      azurerm_storage_account.example.id
+    ]
+  }
+}*/
