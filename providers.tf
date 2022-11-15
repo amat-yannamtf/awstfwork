@@ -15,7 +15,7 @@ provider "aws" {
    //region      = "${var.region}"
 }
 
-  The configuration for the `remote` backend.
+  The configuration for the remote backend.
     terraform {
        backend "remote" {
          # The name of your Terraform Cloud organization.
@@ -28,14 +28,14 @@ provider "aws" {
        }
      }
 
- terraform {
-   backend "s3" {
-     bucket = "backendtfamat"
-     key    = "amattf.tfstate"
-     region = "us-west-2"
-     dynamodb_table = "amattf"
-   }
- }
+ # terraform {
+ #   backend "s3" {
+ #    bucket = "backendtfamat"
+ #    key    = "amattf.tfstate"
+ #    region = "us-west-2"
+ #    dynamodb_table = "amattf"
+ #  }
+ # }
 
 ##ACCOUNT_KEY=$(az storage account keys list --resource-group $RESOURCE_GROUP_NAME --account-name $STORAGE_ACCOUNT_NAME --query '[0].value' -o tsv)
 ##export ARM_ACCESS_KEY=$ACCOUNT_KEY
