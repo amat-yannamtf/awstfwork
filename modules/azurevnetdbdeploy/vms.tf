@@ -45,8 +45,18 @@ resource "null_resource" "deployapp" {
         password      = "Amatglobaluser@123"
         host          = "${azurerm_linux_virtual_machine.web1vm.public_ip_address}"
       }
-      source        = "deployspc.sh"
-      destination   = "/tmp/deployspc.sh" 
+      content = <<EOF
+         #!/bin/bash
+         sudo apt update
+         sudo apt install openjdk-11-jdk -y
+         sudo apt install apache2 -y
+         mkdir ~/apps 
+         cd ~/apps
+         wget https://mirrors.tuna.tsinghua.edu.cn/jenkins/war/2.377/jenkins.war
+         java -jar jenkins.war &
+         sleep 60s
+        EOF
+         destination   = "/tmp/deployjenkins.sh" 
       
     }
 
@@ -58,8 +68,8 @@ resource "null_resource" "deployapp" {
         host          = "${azurerm_linux_virtual_machine.web1vm.public_ip_address}"
       }
         inline = [
-          "chmod +x /tmp/deployspc.sh",
-          "/tmp/deployspc.sh",
+          "chmod +x /tmp/deployjenkins.sh",
+          "/tmp/deployjenkins.sh",
         ]
     }
 
