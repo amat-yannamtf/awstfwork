@@ -1,4 +1,4 @@
-resource "azurerm_virtual_network" "amat" {
+resource "azurerm_virtual_network" "amatvnet" {
     name                = "amat"
     resource_group_name = local.resource_group_name
     address_space       = [var.vnet_range]
@@ -8,7 +8,7 @@ resource "azurerm_virtual_network" "amat" {
     } 
     # explicit dependency
     depends_on = [
-      azurerm_resource_group.amatrg
+      azurerm_resource_group.amattfrg
     ]
 }
 
@@ -22,7 +22,7 @@ resource "azurerm_subnet" "subnets" {
     service_endpoints       = var.subnet_names[count.index] == "db-1"? ["Microsoft.Sql"]: []
 
     depends_on = [
-      azurerm_virtual_network.amat
+      azurerm_virtual_network.amatvnet
     ]
 
   
@@ -84,7 +84,7 @@ resource "azurerm_public_ip" "webip" {
     allocation_method               = "Dynamic"
 
     depends_on = [
-      azurerm_resource_group.amatrg
+      azurerm_resource_group.amattfrg
     ]
 
   

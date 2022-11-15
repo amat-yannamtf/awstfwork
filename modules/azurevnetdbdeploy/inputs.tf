@@ -1,7 +1,6 @@
 variable "vnet_range" {
     default     = "192.168.0.0/16"
-    description = "Address space of the vnet"
-  
+    description = "Address space of the vnet" 
 }
 
 variable "azregion" {
@@ -20,5 +19,4 @@ variable "build_id" {
 
 variable "create_db" {
     default = "yes"
-
 }

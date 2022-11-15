@@ -33,8 +33,8 @@ resource "null_resource" "deployapp" {
 
     connection {
       type          = "ssh"
-      user          = "qtdevops"
-      password      = "motherindia@123" 
+      user          = "amatglobaluser"
+      password      = "Amatuser@123" 
       host          = azurerm_linux_virtual_machine.web1vm.public_ip_address
     }
 
