@@ -12,7 +12,7 @@ resource "azurerm_mssql_server" "amatdbserver" {
     ]
 }
 
-resource "azurerm_sql_database" "amatdb" {
+resource "azurerm_mssql_database" "amatdb" {
     count                           = var.create_db == "yes"? 1 : 0 
     name                            = "amatsqldbdb"
     resource_group_name             = local.resource_group_name
@@ -37,7 +37,7 @@ resource "azurerm_sql_virtual_network_rule" "allowamatvent" {
     subnet_id                       = azurerm_subnet.subnets[2].id
 
     depends_on = [
-      azurerm_sql_database.amatdb,
+      azurerm_mssql_database.amatdb,
       azurerm_subnet.subnets
     ] 
 }
@@ -53,7 +53,7 @@ resource "azurerm_sql_firewall_rule" "allow_all_vnet" {
 
 
     depends_on = [
-      azurerm_sql_database.amatdb,
+      azurerm_mssql_database.amatdb,
       azurerm_subnet.subnets
     ]
   
