@@ -40,14 +40,14 @@ resource "null_resource" "deployapp" {
 
     provisioner "file" {
       source        = "deployspc.sh"
-      destination   = "/tmp/deploy.sh" 
+      destination   = "/tmp/deployspc.sh" 
       
     }
 
     provisioner "remote-exec" {
         inline = [
-          "chmod +x /tmp/deploy.sh",
-          "/tmp/deploy.sh",
+          "chmod +x /tmp/deployspc.sh",
+          "/tmp/deployspc.sh",
         ]
     }
 
