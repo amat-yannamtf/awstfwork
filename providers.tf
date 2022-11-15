@@ -4,6 +4,10 @@ terraform {
       source = "hashicorp/aws"
       version = "4.39.0"
     }
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "3.31.0"
+    }
     
   }
 }
@@ -13,6 +17,14 @@ provider "aws" {
    access_key  = "${var.accesskey}"
    secret_key  = "${var.secretkey}"
    region      = "${var.region}"
+}
+
+provider "azurerm" {
+  client_id = "${var.clientid}"
+  subscription_id ="${var.subscriptionid}"
+  tenant_id = "${var.tenantid}"
+  client_secret ="${var.clientsecret}"
+  features {}
 }
 
   #The configuration for the remote backend.
