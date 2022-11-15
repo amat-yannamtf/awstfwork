@@ -69,7 +69,7 @@ resource "azurerm_network_security_group" "webnsg" {
     }
 
     depends_on = [
-      azurerm_resource_group.amattfrrg
+      azurerm_resource_group.amattfrg
     ]
   
 }

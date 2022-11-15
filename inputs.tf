@@ -4,6 +4,11 @@ variable "vpc_cidr" {
     type = string
 }
 
+variable "vnet_range" {
+    default     = "192.168.0.0/16"
+    description = "Address space of the vnet"
+  
+}
 variable "instance_type" {
     default = "t2.micro"
 }
