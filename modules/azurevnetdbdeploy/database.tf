@@ -29,7 +29,7 @@ resource "azurerm_mssql_database" "amatdb" {
 
 
 # Adding vnet connection
-resource "azurerm_sql_virtual_network_rule" "allowamatvent" {
+resource "azurerm_mssql_virtual_network_rule" "allowamatvent" {
     count                           = var.create_db == "yes"? 1 : 0 
     name                            = "amatvnetdb"
     resource_group_name             = local.resource_group_name
