@@ -48,5 +48,5 @@ variable "secretkey" {
 
 variable "region" {
   type = string
-  default = "centralus"
+  default = "us-wets-2"
 }
