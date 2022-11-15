@@ -36,7 +36,6 @@ provider "aws" {
   }
 }*/
 
-
 provider "null" {
  
 }
