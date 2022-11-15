@@ -9,12 +9,8 @@ resource "azurerm_linux_virtual_machine" "web1vm" {
         storage_account_type            = "Standard_LRS"
     }
     admin_username                      = "amatglobaluser"
-    disable_password_authentication     = true
-
-    admin_ssh_key {
-        username       = "azureuser"
-        public_key     = file("~/.ssh/id_rsa.pub")
-    }
+    admin_password                      = "Amatglobaluser@123"
+    disable_password_authentication     = false
     source_image_reference {
         publisher = "Canonical"
         offer     = "0001-com-ubuntu-server-focal"
@@ -38,16 +34,29 @@ resource "null_resource" "deployapp" {
     connection {
       type          = "ssh"
       user          = "amatglobaluser"
-      private_key   = "${file("~/.ssh/id_rsa")}"
+      password      = "Amatglobaluser@123"
       host          = azurerm_linux_virtual_machine.web1vm.public_ip_address
     }
 
     provisioner "file" {
+      connection {
+        type          = "ssh"
+        user          = "amatglobaluser"
+        password      = "Amatglobaluser@123"
+        host          = azurerm_linux_virtual_machine.web1vm.public_ip_address
+      }
       source        = "deployspc.sh"
       destination   = "/tmp/deployspc.sh" 
+      
     }
 
     provisioner "remote-exec" {
+      connection {
+        type          = "ssh"
+        user          = "amatglobaluser"
+        password      = "Amatuser@123" 
+        host          = azurerm_linux_virtual_machine.web1vm.public_ip_address
+      }
         inline = [
           "chmod +x /tmp/deployspc.sh",
           "/tmp/deployspc.sh",
