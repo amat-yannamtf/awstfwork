@@ -38,15 +38,15 @@ variable "create_db" {
 
 variable "accesskey" {
     type = string 
-    default = "AKIAYGCA2KDK5CH5JCWC"
+    #default = "AKIAYGCA2KDK5CH5JCWC"
 }
 
 variable "secretkey" {
      type = string
-     default = "2gsxEQEgvgsgZ4lH47Oaf55EAwzKdkAst+5x3XBy"
+     #default = "2gsxEQEgvgsgZ4lH47Oaf55EAwzKdkAst+5x3XBy"
 }
 
 variable "region" {
   type = string
-  default = "us-west-2"
+  #default = "us-west-2"
 }
