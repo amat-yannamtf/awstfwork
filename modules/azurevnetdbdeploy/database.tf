@@ -15,10 +15,11 @@ resource "azurerm_mssql_server" "amatdbserver" {
 resource "azurerm_mssql_database" "amatdb" {
     count                           = var.create_db == "yes"? 1 : 0 
     name                            = "amatsqldbdb"
-    resource_group_name             = local.resource_group_name
-    location                        = var.azregion
-    server_name                     = azurerm_mssql_server.amatdbserver[count.index].name
-    edition                         = "Basic" 
+    //resource_group_name             = local.resource_group_name
+    //location                        = var.azregion
+    //server_name                     = azurerm_mssql_server.amatdbserver[count.index].name
+    //edition                         = "Basic" 
+    server_id                       = azurerm_mssql_server.amatdbserver[count.index].id
 
     depends_on = [
       azurerm_mssql_server.amatdbserver
