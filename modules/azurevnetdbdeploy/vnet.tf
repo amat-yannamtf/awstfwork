@@ -2,7 +2,7 @@ resource "azurerm_virtual_network" "amatvnet" {
     name                = "amatvnet"
     resource_group_name = local.resource_group_name
     address_space       = [var.vnet_range]
-    location            = var.azregion
+    location            = var.region
     tags                = {
         Env             = "Development"
     } 
@@ -31,7 +31,7 @@ resource "azurerm_subnet" "subnets" {
 resource "azurerm_network_security_group" "webnsg" {
     name                            = "webnsg"
     resource_group_name             = local.resource_group_name
-    location                        = var.azregion
+    location                        = var.region
     security_rule {
         name                       = "openssh"
         priority                   = 300
@@ -79,7 +79,7 @@ resource "azurerm_network_security_group" "webnsg" {
 resource "azurerm_public_ip" "webip" {
     name                            = "webip"
     resource_group_name             = local.resource_group_name
-    location                        = var.azregion
+    location                        = var.region
     sku                             = "Basic"
     allocation_method               = "Dynamic"
 
@@ -94,7 +94,7 @@ resource "azurerm_public_ip" "webip" {
 resource "azurerm_network_interface" "web_nic" {
     name                                = "webnic"
     resource_group_name                 = local.resource_group_name
-    location                            = var.azregion
+    location                            = var.region
 
     ip_configuration {
         name                            = "webip"

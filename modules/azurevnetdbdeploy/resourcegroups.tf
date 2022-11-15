@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "amattfrg" {
-    location    = var.azregion
+    location    = var.region
     name        = local.resource_group_name
     tags        = {
         Env     = "Development"

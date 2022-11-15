@@ -12,7 +12,7 @@ module "awsvnetdbdeploy" {
 module "azurevnetdbdeploy" {
     source          = "./modules/azurevnetdbdeploy"
     vnet_range      = var.vnet_range
-    azregion        = var.azregion
+    region          = var.azregion
     subnet_names    = var.subnet_names
     build_id        = var.build_id
     create_db       = var.create_db

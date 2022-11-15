@@ -3,7 +3,7 @@ variable "vnet_range" {
     description = "Address space of the vnet" 
 }
 
-variable "azregion" {
+variable "region" {
     default = "eastus"
 }
 

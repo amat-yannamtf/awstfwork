@@ -1,7 +1,7 @@
 resource "azurerm_linux_virtual_machine" "web1vm" {
-    name                                = "qtweb1"
+    name                                = "amatweb1vm"
     resource_group_name                 = local.resource_group_name
-    location                            = var.azregion
+    location                            = var.region
     network_interface_ids               = [azurerm_network_interface.web_nic.id] 
     size                                = "Standard_B1s"
     os_disk {

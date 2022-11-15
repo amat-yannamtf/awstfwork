@@ -2,7 +2,7 @@ resource "azurerm_mssql_server" "amatdbserver" {
     count                           = var.create_db == "yes"? 1 : 0 
     name                            = "amattfsqlserver"
     resource_group_name             = local.resource_group_name
-    location                        = var.azregion
+    location                        = var.region
     version                         = "12.0" 
     administrator_login             = "amatglobaluser"
     administrator_login_password    = "Amatuser@123"
@@ -16,7 +16,7 @@ resource "azurerm_mssql_database" "amatdb" {
     count                           = var.create_db == "yes"? 1 : 0 
     name                            = "amattfsqldbdb"
     //resource_group_name             = local.resource_group_name
-    //location                        = var.azregion
+    //location                        = var.region
     //server_name                     = azurerm_mssql_server.amatdbserver[count.index].name
     //edition                         = "Basic" 
     server_id                       = azurerm_mssql_server.amatdbserver[count.index].id
