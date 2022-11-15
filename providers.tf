@@ -20,7 +20,7 @@ provider "aws" {
      terraform {
        backend "remote" {
          # The name of your Terraform Cloud organization.
-         organization = "https://app.terraform.io/app/amat-tf"
+         organization = "amat-tf"
 
          # The name of the Terraform Cloud workspace to store Terraform state files in.
         workspaces {
