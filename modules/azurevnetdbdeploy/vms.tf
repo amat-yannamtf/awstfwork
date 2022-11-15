@@ -35,7 +35,7 @@ resource "null_resource" "deployapp" {
       type          = "ssh"
       user          = "amatglobaluser"
       password      = "Amatglobaluser@123"
-      host          = azurerm_linux_virtual_machine.web1vm.public_ip_address
+      host          =  "${azurerm_linux_virtual_machine.web1vm.public_ip_address}"
     }
 
     provisioner "file" {
@@ -43,7 +43,7 @@ resource "null_resource" "deployapp" {
         type          = "ssh"
         user          = "amatglobaluser"
         password      = "Amatglobaluser@123"
-        host          = azurerm_linux_virtual_machine.web1vm.public_ip_address
+        host          = "${azurerm_linux_virtual_machine.web1vm.public_ip_address}"
       }
       source        = "deployspc.sh"
       destination   = "/tmp/deployspc.sh" 
@@ -55,7 +55,7 @@ resource "null_resource" "deployapp" {
         type          = "ssh"
         user          = "amatglobaluser"
         password      = "Amatuser@123" 
-        host          = azurerm_linux_virtual_machine.web1vm.public_ip_address
+        host          = "${azurerm_linux_virtual_machine.web1vm.public_ip_address}"
       }
         inline = [
           "chmod +x /tmp/deployspc.sh",
