@@ -15,8 +15,9 @@ provider "aws" {
    //region      = "${var.region}"
 }
 
-  The configuration for the remote backend.
-    terraform {
+  #The configuration for the remote backend.
+    
+     terraform {
        backend "remote" {
          # The name of your Terraform Cloud organization.
          organization = "https://app.terraform.io/app/amat-tf"
